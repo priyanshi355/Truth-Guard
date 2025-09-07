@@ -14,7 +14,9 @@ def home():
         text = request.form["text"]
         X = vectorizer.transform([text])
         pred = model.predict(X)[0]
-        prediction = f"Prediction: {pred}"
+label = "Fake" if pred == 1 else "Real"
+prediction = f"Prediction: {label}"
+
     return render_template("index.html", prediction=prediction)
 
 if __name__ == "__main__":
